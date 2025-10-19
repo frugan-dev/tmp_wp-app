@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="2"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="true"
+    findUnusedPsalmSuppress="true"
+>
+    <projectFiles>
+        <directory name="hook" />
+        <directory name="include" />
+        <directory name="src" />
+        <directory name="tests" />
+        <file name="*.php" />
+        <ignoreFiles>
+            <directory name="src/classes" />
+            <directory name="src/Dependencies" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>

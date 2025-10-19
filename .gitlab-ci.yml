@@ -1,0 +1,96 @@
+stages:
+  - build
+  - test
+  - package
+  - release
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - vendor/
+
+#https://github.com/rickstaa/action-contains-tag
+#https://stackoverflow.com/a/15806668/3929620
+#https://stackoverflow.com/a/66450929/3929620
+# A tag is simply a reference to a commit, it has no relation to a branch.
+# A commit may be part of the history of many branches, or none at all.
+# If CI/CD variables are set to "Protected" (Settings > CI/CD > Variables), 
+# you need to create protect tags (Settings > Repository > Protected tags > v*).
+.only_release: &only_release
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
+
+build_php:
+  #FIXME: GitLab doesn't support digest sha256.
+  # Stuck at composer:2.6.4 (composer@sha256:615228c412e0 w/ php 8.2.11) due to restriction by inpsyde/wonolog:2.x-dev (php >=7.2 < 8.3).
+  image: composer:2.6.4
+  stage: build
+  script:
+    - composer global require coenjacobs/mozart
+    # GitLab installs global libs in /tmp folder (eg. /tmp/vendor/bin/mozart)
+    - export PATH="$PATH:$(composer global config bin-dir --absolute)"
+    - composer install --optimize-autoloader --classmap-authoritative --no-dev --no-interaction
+  artifacts:
+    paths:
+      - src/classes/
+      - src/Dependencies/
+      - vendor/
+    expire_in: 1 day
+  <<: *only_release
+
+build_node:
+  image: node:22-alpine
+  stage: build
+  script:
+    - npm ci
+    - npm run build:prod
+  artifacts:
+    paths:
+      - assets/
+    expire_in: 1 day
+  <<: *only_release
+
+#test:
+#  image: php:7.4
+#  stage: test
+#  needs:
+#    - install
+#  script:
+#    - vendor/bin/phpunit
+
+package:
+  stage: package
+  image: alpine:latest
+  needs:
+    - build_php
+    - build_node
+  script:
+    - apk add --no-cache curl zip
+    - zip -r -x@exclude.lst ${CI_PROJECT_NAME}.zip .
+    - echo "PACKAGE_JOB_ID=$CI_JOB_ID" >> build.env
+    - |
+      curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ${CI_PROJECT_NAME}.zip \
+        "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${CI_PROJECT_NAME}/${CI_COMMIT_TAG}/${CI_PROJECT_NAME}.zip"
+  artifacts:
+    paths:
+      - ${CI_PROJECT_NAME}.zip
+    reports:
+      dotenv: build.env
+  <<: *only_release
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  needs:
+    - package
+  script:
+    #- |
+    #  release-cli create --name "Release $CI_COMMIT_TAG" \
+    #    --tag-name "$CI_COMMIT_TAG" \
+    #    --assets-link "{\"name\":\"${CI_PROJECT_NAME}.zip\",\"url\":\"${CI_PROJECT_URL}/-/jobs/${PACKAGE_JOB_ID}/artifacts/raw/${CI_PROJECT_NAME}.zip\",\"link_type\":\"package\"}"
+    - |
+      release-cli create --name "Release $CI_COMMIT_TAG" \
+        --tag-name "$CI_COMMIT_TAG" \
+        --assets-link "{\"name\":\"${CI_PROJECT_NAME}.zip\",\"url\":\"${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${CI_PROJECT_NAME}/${CI_COMMIT_TAG}/${CI_PROJECT_NAME}.zip\",\"link_type\":\"package\"}"
+  <<: *only_release

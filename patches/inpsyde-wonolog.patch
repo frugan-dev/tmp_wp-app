@@ -1,0 +1,17 @@
+diff --git a/src/PhpErrorController.php b/src/PhpErrorController.php
+index cf4e460..2c4e90e 100644
+--- a/src/PhpErrorController.php
++++ b/src/PhpErrorController.php
+@@ -150,6 +150,12 @@ class PhpErrorController
+      */
+     public function onException(\Throwable $throwable): void
+     {
++        static $isHandling = false;
++        if ($isHandling) {
++            return;
++        }
++        $isHandling = true;
++
+         // Log the PHP exception.
+         $this->updater->update(static::factoryThrowableLog($throwable));
+ 

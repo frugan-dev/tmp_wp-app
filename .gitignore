@@ -1,0 +1,7 @@
+assets/
+node_modules/
+src/classes/
+src/Dependencies/
+vendor/
+composer.lock
+packer.lock

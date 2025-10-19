@@ -1,0 +1,9 @@
+parameters:
+    level: 5
+    bootstrapFiles:
+        - tests/bootstrap.php
+    paths:
+        - .
+    excludePaths:
+        - ./src/classes/
+        - ./src/Dependencies/

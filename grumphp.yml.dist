@@ -1,0 +1,44 @@
+grumphp:
+    process_timeout: null
+    #fixer:
+    #    fix_by_default: true
+    tasks:
+        composer: ~
+
+        composer_normalize: ~
+
+        phpcsfixer:
+            config: .php-cs-fixer.dist.php
+
+        phplint:
+            exclude: ['src/classes', 'src/Dependencies', 'var', 'vendor']
+
+        phpmnd:
+            exclude_path: ['src/classes', 'src/Dependencies', 'var', 'vendor']
+
+        phpparser:
+            ignore_patterns: ['src/classes', 'src/Dependencies', 'var', 'vendor']
+            visitors:
+                declare_strict_types: ~
+                forbidden_function_calls:
+                    blacklist:
+                        - 'var_dump'
+                        - 'print_r'
+                #no_exit_statements: ~
+
+        phpstan:
+            configuration: ./phpstan.neon.dist
+            memory_limit: '-1'
+
+        #https://www.php.net/supported-versions.php
+        phpversion:
+            project: '8.0'
+
+        #psalm:
+        #    config: psalm.xml.dist
+        #    show_info: true
+
+        rector: ~
+
+        securitychecker_roave:
+            run_always: true

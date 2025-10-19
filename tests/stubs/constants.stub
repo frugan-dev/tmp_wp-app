@@ -1,0 +1,6 @@
+<?php
+
+define('WPAPP_NAME', dirname(plugin_basename(__FILE__)));
+define('WPAPP_URL', plugin_dir_url(__FILE__));
+define('WPAPP_PATH', plugin_dir_path(__FILE__));
+define('WPAPP_TEXTDOMAIN', WPAPP_NAME);

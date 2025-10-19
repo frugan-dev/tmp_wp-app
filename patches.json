@@ -1,0 +1,7 @@
+{
+    "patches": {
+        "inpsyde/wonolog": [
+            "patches/inpsyde-wonolog.patch"
+        ]
+    }
+}
