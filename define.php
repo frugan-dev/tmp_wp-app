@@ -22,21 +22,21 @@ if (!defined('WPINC')) {
 // https://bugs.php.net/bug.php?id=46260
 // https://github.com/logical-and/symlink-detective
 return static function (Container $container): void {
-    \Safe\define('WPAPP_URL', Environment::get('WPAPP_URL') ?? plugin_dir_url(__FILE__));
-    \Safe\define('WPAPP_PATH', Environment::get('WPAPP_PATH') ?? plugin_dir_path(__FILE__));
+    \WpApp\Vendor\Safe\define('WPAPP_URL', Environment::get('WPAPP_URL') ?? plugin_dir_url(__FILE__));
+    \WpApp\Vendor\Safe\define('WPAPP_PATH', Environment::get('WPAPP_PATH') ?? plugin_dir_path(__FILE__));
 
     // https://rskuipers.com/entry/different-settings-for-dev-and-live-in-your-htaccess
-    \Safe\define('WPAPP_DEV', false !== stristr((string) Environment::get('APACHE_ARGUMENTS'), '-D dev'));
+    \WpApp\Vendor\Safe\define('WPAPP_DEV', false !== stristr((string) Environment::get('APACHE_ARGUMENTS'), '-D dev'));
 
     // FIXED - add `basename()` to work w/ symlink and local type path repositories in composer.json
-    // \Safe\define('WPAPP_TEXTDOMAIN', basename(dirname(plugin_basename(__FILE__))));
-    \Safe\define('WPAPP_TEXTDOMAIN', WPAPP_NAME);
+    // \WpApp\Vendor\Safe\define('WPAPP_TEXTDOMAIN', basename(dirname(plugin_basename(__FILE__))));
+    \WpApp\Vendor\Safe\define('WPAPP_TEXTDOMAIN', WPAPP_NAME);
 
     // only for development & plugin activation/deactivation
     if (!defined('WPAPP_THEME')) {
         // get_stylesheet_directory();
         // get_template_directory();
         // $theme = wp_get_theme(); $theme->get('stylesheet');
-        \Safe\define('WPAPP_THEME', basename(get_stylesheet_directory()));
+        \WpApp\Vendor\Safe\define('WPAPP_THEME', basename(get_stylesheet_directory()));
     }
 };

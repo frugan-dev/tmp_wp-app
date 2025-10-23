@@ -34,8 +34,8 @@ build_php:
   artifacts:
     paths:
       - src/classes/
-      - src/Dependencies/
       - vendor/
+      - vendor-prefixed/
     expire_in: 1 day
   <<: *only_release
 

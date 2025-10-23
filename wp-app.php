@@ -27,7 +27,7 @@ use WpSpaghetti\WpEnv\Environment;
  * Plugin Name:       WP-App
  * Plugin URI:        https://frugan.it
  * Description:       WordPress plugin.
- * Version:           2.0.0
+ * Version:           3.0.0
  * Author:            Frugan
  * Author URI:        https://frugan.it
  * License:           GPL-3.0-or-later
@@ -47,8 +47,8 @@ if (!defined('BEDROCK_ROOT') && !defined('WP_BOOT_ROOT')) {
 
 require __DIR__.'/vendor/autoload.php';
 
-\Safe\define('WPAPP_FILE', __FILE__);
-\Safe\define('WPAPP_NAME', basename(__FILE__, '.php'));
+\WpApp\Vendor\Safe\define('WPAPP_FILE', __FILE__);
+\WpApp\Vendor\Safe\define('WPAPP_NAME', basename(__FILE__, '.php'));
 
 $ContainerBuilder = new ContainerBuilder();
 

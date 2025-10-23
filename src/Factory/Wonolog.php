@@ -14,18 +14,18 @@ declare(strict_types=1);
 namespace WpApp\Factory;
 
 use DI\Container;
-use WpApp\Dependencies\Inpsyde\Wonolog\Channels;
-use WpApp\Dependencies\Inpsyde\Wonolog\Configurator;
-use WpApp\Dependencies\Inpsyde\Wonolog\DefaultHandler\LogsFolder;
-use WpApp\Dependencies\Inpsyde\Wonolog\HookListener\HttpApiListener;
-use WpApp\Dependencies\Inpsyde\Wonolog\LogLevel;
-use WpApp\Dependencies\Monolog\Formatter\HtmlFormatter;
-use WpApp\Dependencies\Monolog\Formatter\LineFormatter;
-use WpApp\Dependencies\Monolog\Handler\DeduplicationHandler;
-use WpApp\Dependencies\Monolog\Handler\ErrorLogHandler;
-use WpApp\Dependencies\Monolog\Handler\NativeMailerHandler;
-use WpApp\Dependencies\Monolog\Handler\RotatingFileHandler;
-use WpApp\Dependencies\Monolog\Processor\PsrLogMessageProcessor;
+use WpApp\Vendor\Inpsyde\Wonolog\Channels;
+use WpApp\Vendor\Inpsyde\Wonolog\Configurator;
+use WpApp\Vendor\Inpsyde\Wonolog\DefaultHandler\LogsFolder;
+use WpApp\Vendor\Inpsyde\Wonolog\HookListener\HttpApiListener;
+use WpApp\Vendor\Inpsyde\Wonolog\LogLevel;
+use WpApp\Vendor\Monolog\Formatter\HtmlFormatter;
+use WpApp\Vendor\Monolog\Formatter\LineFormatter;
+use WpApp\Vendor\Monolog\Handler\DeduplicationHandler;
+use WpApp\Vendor\Monolog\Handler\ErrorLogHandler;
+use WpApp\Vendor\Monolog\Handler\NativeMailerHandler;
+use WpApp\Vendor\Monolog\Handler\RotatingFileHandler;
+use WpApp\Vendor\Monolog\Processor\PsrLogMessageProcessor;
 use WpSpaghetti\WpEnv\Environment;
 
 if (!\defined('WPINC')) {
@@ -97,7 +97,7 @@ class Wonolog
             // for placeholder substitution
             ->pushProcessor('psr-log-message-processor', new PsrLogMessageProcessor())
             ->pushProcessor('extra-processor', function (array $record): array {
-                $record['extra']['hostname'] = @\Safe\gethostname(); // php_uname('n')
+                $record['extra']['hostname'] = @\WpApp\Vendor\Safe\gethostname(); // php_uname('n')
                 $record['extra']['hostbyaddr'] = @gethostbyaddr(wpapp_get_client_ip());
 
                 if ($this->container->has('session')) {

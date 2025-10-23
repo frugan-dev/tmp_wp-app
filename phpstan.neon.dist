@@ -6,4 +6,4 @@ parameters:
         - .
     excludePaths:
         - ./src/classes/
-        - ./src/Dependencies/
+        - ./vendor-prefixed/

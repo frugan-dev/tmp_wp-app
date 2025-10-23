@@ -13,7 +13,7 @@
         <file name="*.php" />
         <ignoreFiles>
             <directory name="src/classes" />
-            <directory name="src/Dependencies" />
+            <directory name="vendor-prefixed" />
         </ignoreFiles>
     </projectFiles>
 </psalm>

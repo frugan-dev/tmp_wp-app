@@ -1,7 +1,6 @@
 assets/
 node_modules/
 src/classes/
-src/Dependencies/
-vendor/
+vendor*/
 composer.lock
 packer.lock

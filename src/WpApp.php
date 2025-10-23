@@ -84,7 +84,7 @@ class WpApp
 
     private function loadHooks(string $directory, string $type): void
     {
-        foreach (\Safe\glob($directory.'/*.php') as $filename) {
+        foreach (\WpApp\Vendor\Safe\glob($directory.'/*.php') as $filename) {
             $name = basename($filename, '.php');
             $hookName = $this->map[$name] ?? $name;
             $result = require $filename;

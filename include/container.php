@@ -12,8 +12,8 @@ declare(strict_types=1);
  */
 
 use Psr\Container\ContainerInterface;
-use WpApp\Dependencies\Inpsyde\Wonolog\HookListener\HttpApiListener;
-use WpApp\Dependencies\Inpsyde\Wonolog\LogLevel;
+use WpApp\Vendor\Inpsyde\Wonolog\HookListener\HttpApiListener;
+use WpApp\Vendor\Inpsyde\Wonolog\LogLevel;
 use WpApp\Factory\Session\Session;
 use WpApp\Factory\Wonolog;
 use WpSpaghetti\WpEnv\Environment;
@@ -180,7 +180,7 @@ return [
             'min_level' => $minLogLevel,
             // Overwritten by the environment variable `LOGGER_WONOLOG_NAMESPACE`,
             // who also manages the internal Logger in Vite
-            'wonolog_namespace' => 'WpApp\Dependencies\Inpsyde\Wonolog',
+            'wonolog_namespace' => 'WpApp\Vendor\Inpsyde\Wonolog',
         ]);
     },
 ];

@@ -12,7 +12,7 @@ declare(strict_types=1);
  */
 
 use DI\Container;
-use WpApp\Dependencies\Inpsyde\Wonolog\Channels;
+use WpApp\Vendor\Inpsyde\Wonolog\Channels;
 use WpSpaghetti\WpLogger\Logger;
 
 if (!defined('WPINC')) {

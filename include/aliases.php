@@ -26,8 +26,8 @@ use Psr\Log\LogLevel;
 
 // FIXED - Commented out because they interfere with other versions of Monolog installed (e.g. Acorn).
 // These aliases bridge Mozart-prefixed PSR Log classes to standard PSR namespace.
-// if (!interface_exists(LoggerInterface::class) && interface_exists(WpApp\Dependencies\Psr\Log\LoggerInterface::class)) {
-//     class_alias(WpApp\Dependencies\Psr\Log\LoggerInterface::class, LoggerInterface::class);
-//     class_alias(WpApp\Dependencies\Psr\Log\LogLevel::class, LogLevel::class);
-//     class_alias(WpApp\Dependencies\Psr\Log\InvalidArgumentException::class, InvalidArgumentException::class);
+// if (!interface_exists(LoggerInterface::class) && interface_exists(WpApp\Vendor\Psr\Log\LoggerInterface::class)) {
+//     class_alias(WpApp\Vendor\Psr\Log\LoggerInterface::class, LoggerInterface::class);
+//     class_alias(WpApp\Vendor\Psr\Log\LogLevel::class, LogLevel::class);
+//     class_alias(WpApp\Vendor\Psr\Log\InvalidArgumentException::class, InvalidArgumentException::class);
 // }

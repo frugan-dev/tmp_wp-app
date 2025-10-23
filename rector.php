@@ -29,7 +29,7 @@ return RectorConfig::configure()
     // https://getrector.com/documentation/ignoring-rules-or-paths
     ->withSkip([
         __DIR__.'/src/classes',
-        __DIR__.'/src/Dependencies',
+        __DIR__.'/vendor-prefixed',
     ])
     ->withRootFiles()
     ->withSets([

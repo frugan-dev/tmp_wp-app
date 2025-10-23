@@ -11,13 +11,13 @@ grumphp:
             config: .php-cs-fixer.dist.php
 
         phplint:
-            exclude: ['src/classes', 'src/Dependencies', 'var', 'vendor']
+            exclude: ['src/classes', 'var', 'vendor', 'vendor-prefixed']
 
         phpmnd:
-            exclude_path: ['src/classes', 'src/Dependencies', 'var', 'vendor']
+            exclude_path: ['src/classes', 'var', 'vendor', 'vendor-prefixed']
 
         phpparser:
-            ignore_patterns: ['src/classes', 'src/Dependencies', 'var', 'vendor']
+            ignore_patterns: ['src/classes', 'var', 'vendor', 'vendor-prefixed']
             visitors:
                 declare_strict_types: ~
                 forbidden_function_calls:
@@ -32,7 +32,7 @@ grumphp:
 
         #https://www.php.net/supported-versions.php
         phpversion:
-            project: '8.0'
+            project: '8.2'
 
         #psalm:
         #    config: psalm.xml.dist
