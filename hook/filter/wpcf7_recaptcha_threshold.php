@@ -20,7 +20,7 @@ if (!defined('WPINC')) {
 
 return [
     [
-        'callback' => static fn (Container $container): float => Environment::getFloat('GOOGLE_RECAPTCHA_SCORETHRESHOLD') ?? 0.5,
+        'callback' => static fn (Container $container): float => Environment::getFloat('GOOGLE_RECAPTCHA_SCORETHRESHOLD') ?? (float) 0.5,
         'priority' => 999,
     ],
 ];

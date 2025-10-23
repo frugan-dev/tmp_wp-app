@@ -118,7 +118,7 @@ class WpApp
         foreach ($hooks as $hook => $items) {
             foreach ($items as $item) {
                 $originalCallback = $item['callback'];
-                $priority = $item['priority'] ?? 10;
+                $priority = $item['priority'] ?? (int) 10;
                 $accepted_args = $item['accepted_args'] ?? 1;
                 $remove = $item['remove'] ?? false;
 

@@ -267,7 +267,7 @@ return static function (Container $container): void {
         // https://stackoverflow.com/a/53797548/3929620
         function wpapp_glob_case_insensitive_pattern(array $extensions = []): string
         {
-            $patterns = array_map(static fn ($ext): string => implode('', array_map(static fn ($char): string => '['.strtoupper($char).strtolower($char).']', str_split($ext))), $extensions);
+            $patterns = array_map(static fn ($ext): string => implode('', array_map(static fn (string $char): string => '['.strtoupper($char).strtolower($char).']', str_split($ext))), $extensions);
 
             return $patterns ? '*.{'.implode(',', $patterns).'}' : '*';
         }

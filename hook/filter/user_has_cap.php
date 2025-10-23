@@ -19,7 +19,7 @@ if (!defined('WPINC')) {
 
 return [
     [
-        'callback' => static function (Container $container, $allcaps) {
+        'callback' => static function (Container $container, array $allcaps): array {
             if (!empty($allcaps['manage_options']) || empty($allcaps['w3tc_flush_cache'])) {
                 return $allcaps;
             }
