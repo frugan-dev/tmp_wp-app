@@ -47,16 +47,7 @@
   },
   "extra": {
     "wpify-scoper": {
-      "autorun": true,
-      "composerjson": "composer-deps.json",
-      "composerlock": "composer-deps.lock",
       "folder": "vendor-deps",
-      "globals": [
-        "wordpress",
-        "woocommerce",
-        "action-scheduler",
-        "wp-cli"
-      ],
       "prefix": "WpApp\\Vendor"
     }
   },
