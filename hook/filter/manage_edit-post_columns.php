@@ -19,7 +19,7 @@ if (!defined('WPINC')) {
 
 return [
     [
-        'callback' => static fn (Container $container, $columns): array => wpapp_columns_filter($columns),
+        'callback' => static fn (Container $container, array $columns): array => wpapp_columns_filter($columns),
         'priority' => PHP_INT_MAX,
     ],
 ];

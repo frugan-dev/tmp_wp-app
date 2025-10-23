@@ -29,7 +29,7 @@ $header = <<<'EOF'
 // exclude will work only for directories, so if you need to exclude file, try notPath
 $finder = Finder::create()
     ->in([__DIR__])
-    ->exclude(['var', 'vendor', 'vendor-prefixed'])
+    ->exclude(['var', 'vendor', 'vendor-deps'])
     ->append([__DIR__.'/.php-cs-fixer.dist.php'])
 ;
 

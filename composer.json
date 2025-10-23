@@ -5,7 +5,6 @@
   "type": "wordpress-plugin",
   "require": {
     "php": ">=8.2",
-    "cweagans/composer-patches": "^1.7",
     "google/recaptcha": "^1.2",
     "php-di/php-di": "^7.0",
     "wp-spaghetti/wp-env": "^2.2",
@@ -31,14 +30,10 @@
   "autoload": {
     "psr-4": {
       "WpApp\\": "src/"
-    },
-    "files": [
-      "include/aliases.php"
-    ]
+    }
   },
   "config": {
     "allow-plugins": {
-      "cweagans/composer-patches": true,
       "ergebnis/composer-normalize": true,
       "phpro/grumphp-shim": true,
       "phpstan/extension-installer": true,
@@ -51,19 +46,18 @@
     "sort-packages": true
   },
   "extra": {
-    "patches-file": "patches.json",
     "wpify-scoper": {
-      "prefix": "WpApp\\Vendor",
-      "folder": "vendor-prefixed",
-      "globals": [
-        "wordpress",
-        "woocommerce", 
-        "action-scheduler", 
-        "wp-cli"
-      ],
+      "autorun": true,
       "composerjson": "composer-deps.json",
       "composerlock": "composer-deps.lock",
-      "autorun": true
+      "folder": "vendor-deps",
+      "globals": [
+        "wordpress",
+        "woocommerce",
+        "action-scheduler",
+        "wp-cli"
+      ],
+      "prefix": "WpApp\\Vendor"
     }
   },
   "scripts": {

@@ -12,10 +12,10 @@ declare(strict_types=1);
  */
 
 use Psr\Container\ContainerInterface;
-use WpApp\Vendor\Inpsyde\Wonolog\HookListener\HttpApiListener;
-use WpApp\Vendor\Inpsyde\Wonolog\LogLevel;
 use WpApp\Factory\Session\Session;
 use WpApp\Factory\Wonolog;
+use WpApp\Vendor\Inpsyde\Wonolog\HookListener\HttpApiListener;
+use WpApp\Vendor\Inpsyde\Wonolog\LogLevel;
 use WpSpaghetti\WpEnv\Environment;
 use WpSpaghetti\WpLogger\Logger;
 

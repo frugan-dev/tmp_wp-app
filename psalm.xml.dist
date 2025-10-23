@@ -12,8 +12,7 @@
         <directory name="tests" />
         <file name="*.php" />
         <ignoreFiles>
-            <directory name="src/classes" />
-            <directory name="vendor-prefixed" />
+            <directory name="vendor-deps" />
         </ignoreFiles>
     </projectFiles>
 </psalm>

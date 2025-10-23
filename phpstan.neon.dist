@@ -5,4 +5,4 @@ parameters:
     paths:
         - .
     excludePaths:
-        - ./vendor-prefixed/
+        - ./vendor-deps/

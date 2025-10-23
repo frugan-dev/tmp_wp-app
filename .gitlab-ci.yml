@@ -33,9 +33,8 @@ build_php:
     - composer install --optimize-autoloader --classmap-authoritative --no-dev --no-interaction
   artifacts:
     paths:
-      - src/classes/
       - vendor/
-      - vendor-prefixed/
+      - vendor-deps/
     expire_in: 1 day
   <<: *only_release
 

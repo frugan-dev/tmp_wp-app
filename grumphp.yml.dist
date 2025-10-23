@@ -11,13 +11,13 @@ grumphp:
             config: .php-cs-fixer.dist.php
 
         phplint:
-            exclude: ['src/classes', 'var', 'vendor', 'vendor-prefixed']
+            exclude: ['var', 'vendor', 'vendor-deps']
 
         phpmnd:
-            exclude_path: ['src/classes', 'var', 'vendor', 'vendor-prefixed']
+            exclude_path: ['var', 'vendor', 'vendor-deps']
 
         phpparser:
-            ignore_patterns: ['src/classes', 'var', 'vendor', 'vendor-prefixed']
+            ignore_patterns: ['var', 'vendor', 'vendor-deps']
             visitors:
                 declare_strict_types: ~
                 forbidden_function_calls:

@@ -2,8 +2,8 @@
 .git/**
 node_modules/
 node_modules/**
-patches/
-patches/**
+patches*/
+patches*/**
 resources/
 resources/**
 scripts/
@@ -17,7 +17,7 @@ composer*.lock
 exclude.lst
 grumphp.yml.dist
 package*.json
-patches.json
+patches*.json
 phpstan.neon.dist
 psalm.xml.dist
 rector.php

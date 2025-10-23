@@ -12,6 +12,7 @@ declare(strict_types=1);
  */
 
 use Rector\Config\RectorConfig;
+use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 
@@ -28,8 +29,11 @@ return RectorConfig::configure()
     ])
     // https://getrector.com/documentation/ignoring-rules-or-paths
     ->withSkip([
-        __DIR__.'/src/classes',
-        __DIR__.'/vendor-prefixed',
+        __DIR__.'/vendor-deps',
+
+        // Ignore phpmnd false positive
+        // @see https://github.com/povils/phpmnd?tab=readme-ov-file#ignoring-a-number-from-analysis
+        RecastingRemovalRector::class,
     ])
     ->withRootFiles()
     ->withSets([
