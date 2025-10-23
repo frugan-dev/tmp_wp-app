@@ -1,6 +1,6 @@
 assets/
 node_modules/
-src/classes/
 vendor*/
-composer.lock
-packer.lock
+composer*.lock
+package-lock.json
+

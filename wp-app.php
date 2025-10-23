@@ -45,6 +45,7 @@ if (!defined('BEDROCK_ROOT') && !defined('WP_BOOT_ROOT')) {
     exit('BEDROCK_ROOT or WP_BOOT_ROOT not defined');
 }
 
+require __DIR__.'/vendor-prefixed/scoper-autoload.php';
 require __DIR__.'/vendor/autoload.php';
 
 \WpApp\Vendor\Safe\define('WPAPP_FILE', __FILE__);

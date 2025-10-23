@@ -13,14 +13,12 @@ tests/**
 .gitignore
 .gitlab-ci.yml
 .php-cs-fixer.dist.php
-composer.lock
+composer*.lock
 exclude.lst
 grumphp.yml.dist
 package*.json
 patches.json
 phpstan.neon.dist
-post-cmd.php
-pre-cmd.php
 psalm.xml.dist
 rector.php
 vite.config.js

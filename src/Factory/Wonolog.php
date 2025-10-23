@@ -63,12 +63,12 @@ class Wonolog
             $configurator->logSilencedPhpErrors();
 
             if (\is_string(WP_DEBUG_LOG) || WP_DEBUG_LOG) {
-                $errorTypes = E_ALL & ~E_WARNING & ~E_NOTICE & ~E_USER_WARNING & ~E_USER_NOTICE & ~E_STRICT & ~E_DEPRECATED & ~E_USER_DEPRECATED;
+                $errorTypes = E_ALL & ~E_WARNING & ~E_NOTICE & ~E_USER_WARNING & ~E_USER_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED;
             }
         } else {
             $emailHandler = new DeduplicationHandler($emailHandler, \sprintf(LogsFolder::determineFolder().'dedup-%s.log', Environment::get('WP_ENV')), LogLevel::ERROR, 86400);
 
-            $errorTypes = E_ALL & ~E_NOTICE & ~E_USER_NOTICE & ~E_STRICT & ~E_DEPRECATED & ~E_USER_DEPRECATED;
+            $errorTypes = E_ALL & ~E_NOTICE & ~E_USER_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED;
 
             // https://maximivanov.github.io/php-error-reporting-calculator/
             // https://kau-boys.com/2619/wordpress/set-the-debug-level-using-error_reporting

@@ -5,5 +5,4 @@ parameters:
     paths:
         - .
     excludePaths:
-        - ./src/classes/
         - ./vendor-prefixed/
